@@ -1,16 +1,58 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+/* Menu */
+
+#menu {
+  -moz-transition: -moz-transform 0.35s ease, opacity 0.35s ease,
+    visibility 0.35s;
+  -webkit-transition: -webkit-transform 0.35s ease, opacity 0.35s ease,
+    visibility 0.35s;
+  -ms-transition: -ms-transform 0.35s ease, opacity 0.35s ease, visibility 0.35s;
+  transition: transform 0.35s ease, opacity 0.35s ease, visibility 0.35s;
+  -moz-align-items: center;
+  -webkit-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -moz-justify-content: center;
+  -webkit-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  pointer-events: none;
+  background: rgba(36, 41, 67, 0.9);
+  box-shadow: none;
+  height: 100%;
+  left: 0;
+
+  overflow: hidden;
+  padding: 3em 2em;
+  position: fixed;
+  top: 0;
+  /* opacity: 0;
+  visibility: hidden; */
+  width: 100%;
+  z-index: 10002;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
+#menu .inner {
+  -moz-transition: -moz-transform 0.35s ease-out, opacity 0.35s ease,
+    visibility 0.35s;
+  -webkit-transition: -webkit-transform 0.35s ease-out, opacity 0.35s ease,
+    visibility 0.35s;
+  -ms-transition: -ms-transform 0.35s ease-out, opacity 0.35s ease,
+    visibility 0.35s;
+  transition: transform 0.35s ease-out, opacity 0.35s ease, visibility 0.35s;
+  -moz-transform: rotateX(20deg);
+  -webkit-transform: rotateX(20deg);
+  -ms-transform: rotateX(20deg);
+  transform: rotateX(20deg);
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
+  max-height: 100vh;
+  overflow: auto;
+  text-align: center;
+  /* opacity: 0;
+  visibility: hidden; */
+  width: 18em;
 }
