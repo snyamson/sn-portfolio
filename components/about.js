@@ -4,7 +4,12 @@ import PropTypes from "prop-types";
 const About = ({ about }) => {
   return (
     <>
-      <section id="one">
+      <section
+        id="one"
+        style={{
+          backgroundColor: "#1d1d24",
+        }}
+      >
         <div className="inner">
           <header className="major">
             <h2>About</h2>
