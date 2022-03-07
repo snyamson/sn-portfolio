@@ -1,14 +1,17 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 
-const EducationItem = ({ title, btnDesc }) => {
+const EducationItem = ({ title, btnDesc, logo }) => {
   return (
     <>
       <div>
         <p>
           <h2>{title}</h2>
           <span className="image left" style={{ paddingRight: 20 }}>
-            <img src="/assets/images/pic09.jpg" alt="" />
+            <img
+              src={`/assets/images/logos/${logo}.svg`}
+              alt={`${logo}'s logo`}
+            />
           </span>
           <div>
             <ul>
@@ -39,6 +42,7 @@ const EducationItem = ({ title, btnDesc }) => {
 EducationItem.defaultProps = {
   title: "KNUST - Economics (2017 - 2021)",
   btnDesc: "certificate",
+  logo: "knust",
 };
 
 export default EducationItem;

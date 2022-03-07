@@ -4,6 +4,18 @@ import EducationItem from "../components/educationItem";
 import SkillItem from "../components/skillItem";
 
 const Detail = () => {
+  const skills = [
+    "html5",
+    "css3",
+    "js",
+    "node",
+    "react",
+    "excel",
+    "rproj",
+    "postgres",
+    "git",
+  ];
+
   return (
     <>
       <div id="main" className="alt">
@@ -13,7 +25,7 @@ const Detail = () => {
               <h1>About Me</h1>
             </header>
             <span className="image main">
-              <img src="assets/images/pic11.jpg" alt="" />
+              <img src="assets/images/about-me.svg" alt="" />
             </span>
             <p>
               I had my undergraduate degree from Kwame Nkrumah University of
@@ -32,13 +44,9 @@ const Detail = () => {
                 </header>
                 <div className="box alt">
                   <div className="row gtr-50 gtr-uniform">
-                    <SkillItem />
-                    <SkillItem />
-                    <SkillItem />
-                    <SkillItem />
-                    <SkillItem />
-                    <SkillItem />
-                    <SkillItem />
+                    {skills.map((skill, index) => (
+                      <SkillItem key={index} skill={skill} />
+                    ))}
                   </div>
                 </div>
               </div>
@@ -46,9 +54,15 @@ const Detail = () => {
                 <header className="major">
                   <h3>Education and Certifications</h3>
                 </header>
-                <EducationItem btnDesc="transcript" />
-                <EducationItem title="Alison - Advanced Diploma in Data Science with R" />
-                <EducationItem title="Udemy - Google Big Query and PostgreSQL: Big Query for Data Analysis" />
+                <EducationItem btnDesc="transcript" logo="knust" />
+                <EducationItem
+                  title="Alison - Advanced Diploma in Data Science with R"
+                  logo="alison"
+                />
+                <EducationItem
+                  title="Udemy - Google Big Query and PostgreSQL: Big Query for Data Analysis"
+                  logo="udemy"
+                />
               </div>
             </div>
           </div>
