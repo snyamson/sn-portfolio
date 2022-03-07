@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
+import PostItem from "../../components/postItem";
 
 const Index = () => {
   return (
@@ -13,155 +14,25 @@ const Index = () => {
               <img src="/assets/images/pic07.jpg" alt="" />
             </span>
             <header className="major">
-              <h1>Landing</h1>
+              <h1>Blog</h1>
             </header>
             <div className="content">
               <p>
-                Lorem ipsum dolor sit amet nullam consequat
+                &quot; Show me what you can do;
                 <br />
-                sed veroeros. tempus adipiscing nulla.
+                dont tell me what you can do &quot;
+                <br />
+                -- John Wooden
               </p>
             </div>
           </div>
         </section>
 
-        {/* <!-- Main --> */}
         <div id="main">
-          {/* <!-- One --> */}
-          <section id="one">
-            <div className="inner">
-              <header className="major">
-                <h2>Sed amet aliquam</h2>
-              </header>
-              <p>
-                Nullam et orci eu lorem consequat tincidunt vivamus et sagittis
-                magna sed nunc rhoncus condimentum sem. In efficitur ligula tate
-                urna. Maecenas massa vel lacinia pellentesque lorem ipsum dolor.
-                Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis
-                libero. Nullam et orci eu lorem consequat tincidunt vivamus et
-                sagittis magna sed nunc rhoncus condimentum sem. In efficitur
-                ligula tate urna.
-              </p>
-            </div>
-          </section>
-          {/* 
-						<!-- Two --> */}
           <section id="two" className="spotlights">
-            <section>
-              <a href="generic.html" className="image">
-                <img
-                  src="/assets/images/pic08.jpg"
-                  alt=""
-                  data-position="center center"
-                />
-              </a>
-              <div className="content">
-                <div className="inner">
-                  <header className="major">
-                    <h3>Orci maecenas</h3>
-                  </header>
-                  <p>
-                    Nullam et orci eu lorem consequat tincidunt vivamus et
-                    sagittis magna sed nunc rhoncus condimentum sem. In
-                    efficitur ligula tate urna. Maecenas massa sed magna lacinia
-                    magna pellentesque lorem ipsum dolor. Nullam et orci eu
-                    lorem consequat tincidunt. Vivamus et sagittis tempus.
-                  </p>
-                  <ul className="actions">
-                    <li>
-                      <a href="generic.html" className="button">
-                        Learn more
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </section>
-            <section>
-              <a href="generic.html" className="image">
-                <img
-                  src="/assets/images/pic09.jpg"
-                  alt=""
-                  data-position="top center"
-                />
-              </a>
-              <div className="content">
-                <div className="inner">
-                  <header className="major">
-                    <h3>Rhoncus magna</h3>
-                  </header>
-                  <p>
-                    Nullam et orci eu lorem consequat tincidunt vivamus et
-                    sagittis magna sed nunc rhoncus condimentum sem. In
-                    efficitur ligula tate urna. Maecenas massa sed magna lacinia
-                    magna pellentesque lorem ipsum dolor. Nullam et orci eu
-                    lorem consequat tincidunt. Vivamus et sagittis tempus.
-                  </p>
-                  <ul className="actions">
-                    <li>
-                      <a href="generic.html" className="button">
-                        Learn more
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </section>
-            <section>
-              <a href="generic.html" className="image">
-                <img
-                  src="/assets/images/pic10.jpg"
-                  alt=""
-                  data-position="25% 25%"
-                />
-              </a>
-              <div className="content">
-                <div className="inner">
-                  <header className="major">
-                    <h3>Sed nunc ligula</h3>
-                  </header>
-                  <p>
-                    Nullam et orci eu lorem consequat tincidunt vivamus et
-                    sagittis magna sed nunc rhoncus condimentum sem. In
-                    efficitur ligula tate urna. Maecenas massa sed magna lacinia
-                    magna pellentesque lorem ipsum dolor. Nullam et orci eu
-                    lorem consequat tincidunt. Vivamus et sagittis tempus.
-                  </p>
-                  <ul className="actions">
-                    <li>
-                      <a href="generic.html" className="button">
-                        Learn more
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </section>
-          </section>
-
-          {/* <!-- Three --> */}
-          <section id="three">
-            <div className="inner">
-              <header className="major">
-                <h2>Massa libero</h2>
-              </header>
-              <p>
-                Nullam et orci eu lorem consequat tincidunt vivamus et sagittis
-                libero. Mauris aliquet magna magna sed nunc rhoncus pharetra.
-                Pellentesque condimentum sem. In efficitur ligula tate urna.
-                Maecenas laoreet massa vel lacinia pellentesque lorem ipsum
-                dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et
-                sagittis libero. Mauris aliquet magna magna sed nunc rhoncus
-                amet pharetra et feugiat tempus.
-              </p>
-              <ul className="actions">
-                <li>
-                  <a href="generic.html" className="button next">
-                    Get Started
-                  </a>
-                </li>
-              </ul>
-            </div>
+            <PostItem />
+            <PostItem />
+            <PostItem />
           </section>
         </div>
       </div>

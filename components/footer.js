@@ -1,5 +1,3 @@
-import React from "react";
-
 const Footer = () => {
   return (
     <>
@@ -17,11 +15,6 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <a href="#" className="icon brands alt fa-instagram">
-                <span className="label">Instagram</span>
-              </a>
-            </li>
-            <li>
               <a href="#" className="icon brands alt fa-github">
                 <span className="label">GitHub</span>
               </a>
@@ -34,9 +27,7 @@ const Footer = () => {
           </ul>
           <ul className="copyright">
             <li>&copy; 2022</li>
-            <li>
-              Design: <a href="https://html5up.net">HTML5 UP</a>
-            </li>
+            <li>Design: Solomon Nyamson</li>
           </ul>
         </div>
       </footer>

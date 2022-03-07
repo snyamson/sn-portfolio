@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Head from "next/head";
+import About from "../components/about";
 import Banner from "../components/banner";
 import Contact from "../components/contact";
 import Tiles from "../containers/tiles";
@@ -14,6 +15,7 @@ export default function Home() {
 
       <Banner />
       <Tiles />
+      <About />
       <Contact />
     </>
   );

@@ -1,11 +1,12 @@
 @import url(fontawesome-all.min.css);
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,600,600italic");
 
-/*
-	Forty by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
+:root {
+  --main-dark: #242943;
+  --theme-blue: #0066cc
+  --theme-white:#ffffff
+  --theme-gray:#dedede
+}
 
 html,
 body,
@@ -188,7 +189,7 @@ html {
 }
 
 body {
-  background: #242943;
+  background: var(--main-dark);
 }
 
 body.is-preload *,
@@ -2052,7 +2053,7 @@ select {
 
 select option {
   color: #ffffff;
-  background: #242943;
+  background: var(--main-dark);
 }
 
 select:focus::-ms-value {
@@ -2138,7 +2139,7 @@ input[type="radio"]:checked + label:before {
   background: #ffffff;
   border-color: #9bf1ff;
   content: "\f00c";
-  color: #242943;
+  color: var(--main-dark);
 }
 
 input[type="checkbox"]:focus + label:before,
@@ -2230,7 +2231,7 @@ input[type="radio"] + label:before {
 .icon.alt:before {
   background-color: #ffffff;
   border-radius: 100%;
-  color: #242943;
+  color: var(--main-dark);
   display: inline-block;
   height: 2em;
   line-height: 2em;
@@ -2491,12 +2492,12 @@ ul.pagination li > .page {
 
 ul.pagination li > .page.active {
   background-color: #ffffff;
-  color: #242943;
+  color: var(--main-dark);
 }
 
 ul.pagination li > .page.active:hover {
   background-color: #9bf1ff;
-  color: #242943 !important;
+  color: var(--main-dark) !important;
 }
 
 ul.pagination li > .page.active:active {
@@ -2769,7 +2770,7 @@ button.primary,
 .button.primary {
   background-color: #ffffff;
   box-shadow: none;
-  color: #242943;
+  color: var(--main-dark);
 }
 
 input[type="submit"].primary:hover,
@@ -2783,7 +2784,7 @@ button.primary:active,
 .button.primary:hover,
 .button.primary:active {
   background-color: #9bf1ff;
-  color: #242943 !important;
+  color: var(--main-dark) !important;
 }
 
 input[type="submit"].primary:active,
@@ -2901,7 +2902,7 @@ button:disabled,
 }
 
 .tiles article:after {
-  background-color: rgba(36, 41, 67, 0.25);
+  background-color: rgba(36, 41, 67, 0.25); 
   content: "";
   display: block;
   height: 100%;
@@ -2934,7 +2935,8 @@ button:disabled,
 }
 
 .tiles article:nth-child(6n - 5):before {
-  background-color: #6fc3df;
+  /* background-color: #6fc3df; */
+  background-color: #162254;
 }
 
 .tiles article:nth-child(6n - 4):before {
@@ -2942,19 +2944,23 @@ button:disabled,
 }
 
 .tiles article:nth-child(6n - 3):before {
-  background-color: #ec8d81;
+  /* background-color: #ec8d81; */
+  background-color: #279fdd;
 }
 
 .tiles article:nth-child(6n - 2):before {
-  background-color: #e7b788;
+  /* background-color: #e7b788; */
+  background-color: #4acfac;
 }
 
 .tiles article:nth-child(6n - 1):before {
-  background-color: #8ea9e8;
+  /* background-color: #8ea9e8; */
+  background-color: #ec8d81;
 }
 
 .tiles article:nth-child(6n):before {
-  background-color: #87c5a4;
+  /* background-color: #87c5a4; */
+  background-color: #7e8ce0;
 }
 
 @media screen and (max-width: 1280px) {
@@ -3232,7 +3238,7 @@ button:disabled,
   -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
   background-color: #ffffff;
-  color: #242943;
+  color: var(--main-dark);
   display: inline-block;
   line-height: 1.65em;
   margin-right: 0.325em;
@@ -3496,7 +3502,7 @@ body.is-preload #header.alt {
   -ms-transition-delay: 0.75s;
   transition-delay: 0.75s;
   pointer-events: none;
-  background-color: #242943;
+  background-color: var(--main-dark);
   content: "";
   display: block;
   height: 100%;
