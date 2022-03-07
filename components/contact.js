@@ -30,18 +30,26 @@ const Contact = () => {
                 }, 2000);
               }}
             >
-              {({ handleSubmit, handleReset, isSubmitting }) => (
+              {({ error, handleSubmit, handleReset, isSubmitting }) => (
                 <Form method="post" onSubmit={handleSubmit}>
                   <div className="fields">
                     <div className="field half">
                       <label htmlFor="name">Name</label>
                       <Field type="text" name="name" id="name" />
-                      <ErrorMessage name="name" />
+                      <ErrorMessage
+                        name="name"
+                        component="div"
+                        style={{ color: "#ff3333", fontStyle: "italic" }}
+                      />
                     </div>
                     <div className="field half">
                       <label htmlFor="email">Email</label>
                       <Field type="text" name="email" id="email" />
-                      <ErrorMessage name="email" />
+                      <ErrorMessage
+                        name="email"
+                        component="div"
+                        style={{ color: "#ff3333", fontStyle: "italic" }}
+                      />
                     </div>
                     <div className="field">
                       <label htmlFor="message">Message</label>
@@ -52,7 +60,11 @@ const Contact = () => {
                         rows="6"
                       />
 
-                      <ErrorMessage name="message" />
+                      <ErrorMessage
+                        name="message"
+                        component="div"
+                        style={{ color: "#ff3333", fontStyle: "italic" }}
+                      />
                     </div>
                   </div>
                   <ul className="actions">
