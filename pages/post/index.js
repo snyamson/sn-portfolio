@@ -17,13 +17,13 @@ const Index = () => {
               <h1>Blog</h1>
             </header>
             <div className="content">
-              <p>
+              <blockquote>
                 &quot; Show me what you can do;
                 <br />
                 dont tell me what you can do &quot;
                 <br />
                 -- John Wooden
-              </p>
+              </blockquote>
             </div>
           </div>
         </section>
