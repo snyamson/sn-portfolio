@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+import Link from "next/link";
 
 const About = ({ about }) => {
   return (
@@ -17,7 +17,9 @@ const About = ({ about }) => {
           <p>{about}</p>
           <ul className="actions">
             <li>
-              <a className="button next">Read More</a>
+              <Link href="/about">
+                <a className="button next">Read More</a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -25,8 +27,6 @@ const About = ({ about }) => {
     </>
   );
 };
-
-About.propTypes = {};
 
 About.defaultProps = {
   about:

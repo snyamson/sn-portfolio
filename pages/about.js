@@ -54,6 +54,7 @@ const Detail = () => {
                 <header className="major">
                   <h3>Education and Certifications</h3>
                 </header>
+
                 <EducationItem btnDesc="transcript" logo="knust" />
                 <EducationItem
                   title="Alison - Advanced Diploma in Data Science with R"
