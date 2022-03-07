@@ -23,6 +23,11 @@ const Banner = (props) => {
                   View Projects
                 </a>
               </li>
+              <li>
+                <a href="#" className="button primary scrolly">
+                  Resume
+                </a>
+              </li>
             </ul>
           </div>
         </div>

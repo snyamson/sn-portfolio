@@ -17,6 +17,14 @@ const NavModal = ({ style }) => {
           </Link>
         </li>
       </ul>
+
+      <ul className="actions stacked">
+        <li>
+          <a href="#" className="button primary fit">
+            Resume
+          </a>
+        </li>
+      </ul>
     </nav>
   );
 };

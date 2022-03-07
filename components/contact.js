@@ -60,7 +60,9 @@ const Contact = () => {
                       <input
                         type="submit"
                         value={isSubmitting ? "Sending" : "Send Message"}
-                        className="primary"
+                        className={`primary ${
+                          isSubmitting ? "disabled" : null
+                        }`}
                       />
                     </li>
                     <li>
