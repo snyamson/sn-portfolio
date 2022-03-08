@@ -1,20 +1,21 @@
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
+import groq from "groq";
+import client from "../client";
 import EducationItem from "../components/educationItem";
 import SkillItem from "../components/skillItem";
 
-const Detail = () => {
-  const skills = [
-    "html5",
-    "css3",
-    "js",
-    "node",
-    "react",
-    "excel",
-    "rproj",
-    "postgres",
-    "git",
-  ];
+const Detail = ({ skills, education }) => {
+  // const skills = [
+  //   "html5",
+  //   "css3",
+  //   "js",
+  //   "node",
+  //   "react",
+  //   "excel",
+  //   "rproj",
+  //   "postgres",
+  //   "git",
+  // ];
 
   return (
     <>
@@ -55,15 +56,18 @@ const Detail = () => {
                   <h3>Education and Certifications</h3>
                 </header>
 
-                <EducationItem btnDesc="transcript" logo="knust" />
-                <EducationItem
+                {education.map((item, index) => (
+                  <EducationItem key={index} item={item} />
+                ))}
+
+                {/* <EducationItem
                   title="Alison - Advanced Diploma in Data Science with R"
                   logo="alison"
                 />
                 <EducationItem
                   title="Udemy - Google Big Query and PostgreSQL: Big Query for Data Analysis"
                   logo="udemy"
-                />
+                /> */}
               </div>
             </div>
           </div>
@@ -74,3 +78,33 @@ const Detail = () => {
 };
 
 export default Detail;
+
+export async function getStaticProps() {
+  const skills = await client.fetch(groq`
+      *[_type == "skill"]
+      {
+          title,
+           slug, 
+          skillIcon 
+      }
+    `);
+
+  const education = await client.fetch(groq`
+      *[_type == "education"]
+      {
+          title,
+           slug, 
+          institutionImage,
+          certType,
+          "docFileUrl": docFile.asset->url,
+          body
+      }
+    `);
+
+  return {
+    props: {
+      skills,
+      education,
+    },
+  };
+}

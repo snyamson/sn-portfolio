@@ -1,20 +1,33 @@
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
+import Image from "next/image";
+import { useNextSanityImage } from "next-sanity-image";
+import { PortableText } from "@portabletext/react";
+import client, { ptComponents } from "../client";
 
-const EducationItem = ({ title, btnDesc, logo }) => {
+const EducationItem = ({ item }) => {
+  const imageProps = useNextSanityImage(client, item?.institutionImage);
+
   return (
     <>
       <div>
         <p>
-          <h2>{title}</h2>
+          {/* <h2>{title}</h2> */}
+          <h2>{item?.title}</h2>
           <span className="image left" style={{ paddingRight: 20 }}>
-            <img
+            <Image
+              {...imageProps}
+              alt={`${item?.title}'s logo`}
+              height={515}
+              width={576}
+            />
+            {/* <img
               src={`/assets/images/logos/${logo}.svg`}
               alt={`${logo}'s logo`}
-            />
+            /> */}
           </span>
           <div>
-            <ul>
+            <PortableText value={item?.body} components={ptComponents} />
+            {/* <ul>
               <li>Dolor etiam magna etiam.</li>
               <li>Sagittis lorem eleifend.</li>
               <li>Felis feugiat viverra.</li>
@@ -22,16 +35,24 @@ const EducationItem = ({ title, btnDesc, logo }) => {
               <li>Sagittis lorem eleifend.</li>
               <li>Felis feugiat viverra.</li>
               <li>Dolor etiam magna etiam.</li>
-            </ul>
+            </ul> */}
           </div>
           <br />
-          <ul style={{ marginTop: -20 }} className="actions fit small">
-            <li>
-              <a href="#" className="button fit small solid ">
-                {btnDesc}
-              </a>
-            </li>
-          </ul>
+          {item?.certType !== "none" && (
+            <ul style={{ marginTop: -20 }} className="actions fit small">
+              <li>
+                <a
+                  href={`${item?.docFileUrl}?dl=${item?.certType}-Solomon-Nyamson.pdf`}
+                  className={`button fit small solid ${
+                    item?.docFileUrl == null ? "disabled" : null
+                  }`}
+                >
+                  {/* {btnDesc} */}
+                  {item?.certType}
+                </a>
+              </li>
+            </ul>
+          )}
         </p>
       </div>
       <hr />

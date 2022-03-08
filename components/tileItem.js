@@ -3,7 +3,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
 
-const TileItem = (props) => {
+const TileItem = ({ project }) => {
   return (
     <article>
       <span className="image">
@@ -11,11 +11,9 @@ const TileItem = (props) => {
       </span>
       <header className="major">
         <h3>
-          <Link href="/detail">
-            <a className="link">Name of Project</a>
-          </Link>
+          <a className="link">{project.title}</a>
         </h3>
-        <p>One line Project Description</p>
+        <p>{project.description}</p>
         <br />
         <ul className="actions fit small">
           <li>
@@ -35,5 +33,12 @@ const TileItem = (props) => {
 };
 
 TileItem.propTypes = {};
+
+TileItem.defaultProps = {
+  project: {
+    title: "Name of Project",
+    description: "One line Project Description",
+  },
+};
 
 export default TileItem;
