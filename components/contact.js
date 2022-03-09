@@ -14,6 +14,8 @@ const Contact = () => {
     message: Yup.string().required("Required"),
   });
 
+  const errStyle = { color: "#ff3333", fontStyle: "italic" };
+
   return (
     <>
       <section id="contact">
@@ -22,15 +24,28 @@ const Contact = () => {
             <Formik
               initialValues={initialValues}
               validationSchema={validationSchema}
-              onSubmit={(values, { setSubmitting, resetForm }) => {
-                setTimeout(() => {
-                  console.log(values);
-                  setSubmitting(false);
-                  resetForm({ values: "" });
-                }, 2000);
+              onSubmit={async (values, { setSubmitting, resetForm }) => {
+                try {
+                  // const result = await fetch("/api/contact", {
+                  //   method: "POST",
+                  //   headers: {
+                  //     Accept: "application/json, text/plain, */*",
+                  //     "Content-Type": "application/json",
+                  //   },
+                  //   body: JSON.stringify(values),
+                  // });
+
+                  // if (result.ok) {
+                  //   setSubmitting(false);
+                  //   resetForm({ values: "" });
+                  // }
+                  console.log(result);
+                } catch (error) {
+                  console.log(error);
+                }
               }}
             >
-              {({ error, handleSubmit, handleReset, isSubmitting }) => (
+              {({ handleSubmit, handleReset, isSubmitting }) => (
                 <Form method="post" onSubmit={handleSubmit}>
                   <div className="fields">
                     <div className="field half">
@@ -39,7 +54,7 @@ const Contact = () => {
                       <ErrorMessage
                         name="name"
                         component="div"
-                        style={{ color: "#ff3333", fontStyle: "italic" }}
+                        style={errStyle}
                       />
                     </div>
                     <div className="field half">
@@ -48,7 +63,7 @@ const Contact = () => {
                       <ErrorMessage
                         name="email"
                         component="div"
-                        style={{ color: "#ff3333", fontStyle: "italic" }}
+                        style={errStyle}
                       />
                     </div>
                     <div className="field">
@@ -63,7 +78,7 @@ const Contact = () => {
                       <ErrorMessage
                         name="message"
                         component="div"
-                        style={{ color: "#ff3333", fontStyle: "italic" }}
+                        style={errStyle}
                       />
                     </div>
                   </div>

@@ -20,7 +20,10 @@ const NavModal = ({ style }) => {
 
       <ul className="actions stacked">
         <li>
-          <a href="#" className="button primary fit">
+          <a
+            // href={`${resume[0]?.resumeUrl}?dl=Solomon-Nyamson-Resume.pdf`}
+            className="button primary fit"
+          >
             Resume
           </a>
         </li>

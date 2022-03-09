@@ -1,7 +1,4 @@
-import React from "react";
-import PropTypes from "prop-types";
-
-const Banner = (props) => {
+const Banner = ({ resume }) => {
   return (
     <>
       <section id="banner" className="major">
@@ -24,7 +21,10 @@ const Banner = (props) => {
                 </a>
               </li>
               <li>
-                <a href="#" className="button primary scrolly">
+                <a
+                  href={`${resume[0]?.resumeUrl}?dl=Solomon-Nyamson-Resume.pdf`}
+                  className="button primary scrolly"
+                >
                   Resume
                 </a>
               </li>
@@ -35,7 +35,5 @@ const Banner = (props) => {
     </>
   );
 };
-
-Banner.propTypes = {};
 
 export default Banner;

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import NavModal from "./navModal";
 
-const Navigation = () => {
+const Navigation = ({ resume }) => {
   return (
     <>
       <header id="header" className="alt">
@@ -16,7 +16,7 @@ const Navigation = () => {
         </nav>
       </header>
 
-      <NavModal />
+      <NavModal resume={resume} />
     </>
   );
 };

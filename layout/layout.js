@@ -3,11 +3,11 @@ import Footer from "../components/footer";
 import Navigation from "../components/navigation";
 import Wrapper from "../containers/wrapper";
 
-const Layout = ({ children }) => {
+const Layout = ({ children, resume }) => {
   return (
     <>
       <Wrapper>
-        <Navigation />
+        <Navigation resume={resume} />
         {children}
         <Footer />
       </Wrapper>

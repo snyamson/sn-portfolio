@@ -14,7 +14,7 @@ const About = ({ about }) => {
           <header className="major">
             <h2>About</h2>
           </header>
-          <p>{about}</p>
+          <p>{about[0]?.description}</p>
           <ul className="actions">
             <li>
               <Link href="/about">

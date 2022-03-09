@@ -1,10 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 import groq from "groq";
-import client from "../client";
+import { PortableText } from "@portabletext/react";
+import client, { ptComponents } from "../client";
 import EducationItem from "../components/educationItem";
 import SkillItem from "../components/skillItem";
 
-const Detail = ({ skills, education }) => {
+const Detail = ({ skills, education, aboutMe }) => {
+  console.log(aboutMe[0].description);
+
   // const skills = [
   //   "html5",
   //   "css3",
@@ -28,14 +31,21 @@ const Detail = ({ skills, education }) => {
             <span className="image main">
               <img src="assets/images/about-me.svg" alt="" />
             </span>
-            <p>
+            {/* <p>
               I had my undergraduate degree from Kwame Nkrumah University of
               Science and Technology (KNUST) - Ghana there I studied Economics.
               I possess great analytical and problem-solving skills. I enjoy
               working alone and also in teams. My hobbies are coding and
               researching.
-            </p>
+            </p> */}
+            <p>{aboutMe[0]?.description}</p>
 
+            {aboutMe[0]?.body !== null && (
+              <PortableText
+                value={aboutMe[0]?.body}
+                components={ptComponents}
+              />
+            )}
             <hr className="major" />
 
             <div className="row">
@@ -101,10 +111,19 @@ export async function getStaticProps() {
       }
     `);
 
+  const aboutMe = await client.fetch(groq`
+      *[_type == "aboutMe"]
+      {
+        description,
+        body
+      }
+    `);
+
   return {
     props: {
       skills,
       education,
+      aboutMe,
     },
   };
 }
