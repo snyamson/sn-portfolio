@@ -1,5 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import toast, { Toaster } from "react-hot-toast";
 import * as Yup from "yup";
+import axios from "axios";
 
 const Contact = () => {
   const initialValues = {
@@ -16,30 +18,31 @@ const Contact = () => {
 
   const errStyle = { color: "#ff3333", fontStyle: "italic" };
 
+  const notify = () =>
+    toast.success("Successfully Sent!", {
+      position: "top-center",
+      style: {
+        background: "#333",
+        color: "#fff",
+        marginTop: "50px",
+      },
+    });
+
   return (
     <>
+      <Toaster />
       <section id="contact">
         <div className="inner">
           <section>
             <Formik
               initialValues={initialValues}
               validationSchema={validationSchema}
-              onSubmit={async (values, { setSubmitting, resetForm }) => {
+              onSubmit={(values, { setSubmitting, resetForm }) => {
                 try {
-                  // const result = await fetch("/api/contact", {
-                  //   method: "POST",
-                  //   headers: {
-                  //     Accept: "application/json, text/plain, */*",
-                  //     "Content-Type": "application/json",
-                  //   },
-                  //   body: JSON.stringify(values),
-                  // });
-
-                  // if (result.ok) {
-                  //   setSubmitting(false);
-                  //   resetForm({ values: "" });
-                  // }
-                  console.log(result);
+                  axios.post("/api/contact", values);
+                  setSubmitting(false);
+                  resetForm({ values: "" });
+                  notify();
                 } catch (error) {
                   console.log(error);
                 }

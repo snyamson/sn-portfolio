@@ -6,8 +6,6 @@ import EducationItem from "../components/educationItem";
 import SkillItem from "../components/skillItem";
 
 const Detail = ({ skills, education, aboutMe }) => {
-  console.log(aboutMe[0].description);
-
   // const skills = [
   //   "html5",
   //   "css3",
