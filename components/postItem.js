@@ -1,11 +1,17 @@
-/* eslint-disable @next/next/no-img-element */
-import React from "react";
 import Link from "next/link";
+import imageUrlBuilder from "@sanity/image-url";
+import client from "../client";
 
-const PostItem = () => {
+const PostItem = ({ post }) => {
   //  data-position="center center"
   //   data-position="top center"
   //      data-position="25% 25%"
+
+  const builder = imageUrlBuilder(client);
+
+  const urlFor = (source) => {
+    return builder.image(source);
+  };
 
   return (
     <>
@@ -13,24 +19,17 @@ const PostItem = () => {
         <Link href="/detail">
           <a className="image">
             <img
-              src="/assets/images/pic09.jpg"
-              alt=""
-              data-position="top center"
+              src={urlFor(post?.mainImage).width(576).url()}
+              alt={`${post?.title} image`}
             />
           </a>
         </Link>
         <div className="content">
           <div className="inner">
             <header className="major">
-              <h3>Rhoncus magna</h3>
+              <h3>{post?.title}</h3>
             </header>
-            <p>
-              Nullam et orci eu lorem consequat tincidunt vivamus et sagittis
-              magna sed nunc rhoncus condimentum sem. In efficitur ligula tate
-              urna. Maecenas massa sed magna lacinia magna pellentesque lorem
-              ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus
-              et sagittis tempus.
-            </p>
+            <p>{post?.description}</p>
             <ul className="actions">
               <li>
                 <Link href="/detail ">
@@ -46,5 +45,3 @@ const PostItem = () => {
 };
 
 export default PostItem;
-
-PostItem.defaultProps = {};

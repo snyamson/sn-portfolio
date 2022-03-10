@@ -16,10 +16,6 @@ const SkillItem = ({ skill }) => {
             sizes="(max-width:200px)"
             alt={`${skill.title} icon`}
           />
-          {/* <img
-            src={`/assets/images/icons/${skill}.svg`}
-            alt={`${skill} icon`}
-          /> */}
         </span>
       </div>
     </>

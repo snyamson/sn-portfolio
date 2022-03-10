@@ -1,22 +1,16 @@
 import React from "react";
-import PropTypes from "prop-types";
 import TileItem from "../components/tileItem";
 
-const Tiles = (props) => {
+const Tiles = ({ projects }) => {
   return (
     <div id="main">
       <section id="one" className="tiles">
-        <TileItem />
-        <TileItem />
-        <TileItem />
-        <TileItem />
-        <TileItem />
-        <TileItem />
+        {projects.map((project, index) => (
+          <TileItem key={index} project={project} />
+        ))}
       </section>
     </div>
   );
 };
-
-Tiles.propTypes = {};
 
 export default Tiles;

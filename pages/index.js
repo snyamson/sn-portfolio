@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import Head from "next/head";
 import groq from "groq";
 import client from "../client";
@@ -7,7 +6,7 @@ import Banner from "../components/banner";
 import Contact from "../components/contact";
 import Tiles from "../containers/tiles";
 
-export default function Home({ aboutMe, resume }) {
+export default function Home({ aboutMe, resume, projects }) {
   return (
     <>
       <Head>
@@ -16,7 +15,7 @@ export default function Home({ aboutMe, resume }) {
       </Head>
 
       <Banner resume={resume} />
-      <Tiles />
+      <Tiles projects={projects} />
       <About about={aboutMe} />
       <Contact />
     </>
@@ -38,10 +37,23 @@ export async function getStaticProps() {
       }
     `);
 
+  const projects = await client.fetch(groq`
+      *[_type == "project"]
+      {
+        title,
+        description,
+        mainImage,
+        projectLink,
+        reportLink,
+        viewLink
+      }
+    `);
+
   return {
     props: {
       aboutMe,
       resume,
+      projects,
     },
   };
 }

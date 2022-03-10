@@ -1,17 +1,15 @@
-/* eslint-disable @next/next/no-img-element */
-import React from "react";
+import groq from "groq";
+import client from "../../client";
 import PostItem from "../../components/postItem";
 
-const Index = () => {
+const Index = ({ posts }) => {
   return (
     <>
       <div id="wrapper">
-        {/* <!-- Banner -->
-				<!-- Note: The "styleN" className below should match that of the header element. --> */}
         <section id="banner" className="style2">
           <div className="inner">
             <span className="image">
-              <img src="/assets/images/pic07.jpg" alt="" />
+              <img src="/assets/images/banner.svg" alt="hero" />
             </span>
             <header className="major">
               <h1>Blog</h1>
@@ -30,9 +28,9 @@ const Index = () => {
 
         <div id="main">
           <section id="two" className="spotlights">
-            <PostItem />
-            <PostItem />
-            <PostItem />
+            {posts.map((post, index) => (
+              <PostItem key={index} post={post} />
+            ))}
           </section>
         </div>
       </div>
@@ -41,3 +39,26 @@ const Index = () => {
 };
 
 export default Index;
+
+export async function getStaticProps() {
+  const posts = await client.fetch(groq`
+      *[_type == "post" && publishedAt < now()]
+      {_id,
+         publishedAt,
+          title,
+           slug,
+           description, 
+           body,
+           mainImage,
+           "name": author->name,
+            "categories": categories[]->title, 
+
+      } | order(publishedAt desc) 
+    `);
+
+  return {
+    props: {
+      posts,
+    },
+  };
+}
