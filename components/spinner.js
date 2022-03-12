@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 const Spinner = () => {
   return (
     <div
@@ -8,7 +9,7 @@ const Spinner = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: " rgba(6,7,7,0.8)",
+        backgroundColor: "rgba(6,7,7,0.8)",
         zIndex: "30000",
       }}
     >

@@ -1,7 +1,11 @@
 import Link from "next/link";
 import React from "react";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { urlState } from "../atoms/urlState";
 
 const NavModal = ({ style }) => {
+  const url = useRecoilValue(urlState);
+
   return (
     <nav id="menu" style={style}>
       <ul className="links">
@@ -21,7 +25,7 @@ const NavModal = ({ style }) => {
       <ul className="actions stacked">
         <li>
           <a
-            // href={`${resume[0]?.resumeUrl}?dl=Solomon-Nyamson-Resume.pdf`}
+            href={`${url}?dl=Solomon-Nyamson-Resume.pdf`}
             className="button primary fit"
           >
             Resume

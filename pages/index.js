@@ -5,8 +5,14 @@ import About from "../components/about";
 import Banner from "../components/banner";
 import Contact from "../components/contact";
 import Tiles from "../containers/tiles";
+import { useRecoilState } from "recoil";
+import { urlState } from "../atoms/urlState";
 
 export default function Home({ aboutMe, resume, projects }) {
+  const [url, setUrl] = useRecoilState(urlState);
+
+  setUrl(resume[0]?.resumeUrl);
+
   return (
     <>
       <Head>
