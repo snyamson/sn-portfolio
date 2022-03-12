@@ -328,19 +328,25 @@ h6 {
   font-size: 0.7em;
 }
 
+
 @media screen and (max-width: 736px) {
-  h1 {
+
+   h1{
     font-size: 2em;
+    
   }
 
   h2 {
     font-size: 1.5em;
   }
 
-  h3 {
+    h3 {
     font-size: 1.25em;
+    
+    
   }
-}
+} 
+
 
 sub {
   font-size: 0.8em;
@@ -1878,9 +1884,11 @@ header.major {
   margin-bottom: 2em;
 }
 
+
 header.major > :first-child {
   margin-bottom: 0;
   width: calc(100% + 0.5em);
+ 
 }
 
 header.major > :first-child:after {

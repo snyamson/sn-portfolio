@@ -1,48 +1,74 @@
-/* eslint-disable @next/next/no-img-element */
+import groq from "groq";
+import Image from "next/image";
+import client, { ptComponents } from "../../client";
+import { PortableText } from "@portabletext/react";
+import { useNextSanityImage } from "next-sanity-image";
 
-const PostDetail = () => {
+const PostDetail = ({ post }) => {
+  const imageProps = useNextSanityImage(client, post.mainImage);
+
+  const RenderMeta = ({ children }) => {
+    return (
+      <>
+        <div
+          className="col-12"
+          style={{
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          {children}
+        </div>
+      </>
+    );
+  };
+
+  const RenderCategory = ({ title }) => {
+    return (
+      <div
+        style={{
+          padding: "0 2rem",
+          background: "#fff",
+          color: "#212121",
+          marginLeft: "2rem",
+        }}
+      >
+        {title}
+      </div>
+    );
+  };
+
   return (
     <>
       <div id="main" className="alt">
         <section id="one">
           <div className="inner">
             <header className="major">
-              <h1>Generic</h1>
+              <h1 className="post_title">{post?.title}</h1>
             </header>
             <span className="image main">
-              <img src="assets/images/pic11.jpg" alt="" />
+              <Image
+                {...imageProps}
+                layout="responsive"
+                alt={`${post?.title}'s image`}
+              />
+              <div
+                className="row"
+                style={{
+                  marginTop: "1rem",
+                }}
+              >
+                <RenderMeta>
+                  By {post?.name} on{" "}
+                  {new Date(post?.publishedAt).toDateString()}
+                  {post?.categories.map((category, index) => (
+                    <RenderCategory key={index} title={category} />
+                  ))}
+                </RenderMeta>
+              </div>
             </span>
-            <p>
-              Donec eget ex magna. Interdum et malesuada fames ac ante ipsum
-              primis in faucibus. Pellentesque venenatis dolor imperdiet dolor
-              mattis sagittis. Praesent rutrum sem diam, vitae egestas enim
-              auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit
-              amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a
-              elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris.
-              Curabitur sapien risus, commodo eget turpis at, elementum
-              convallis elit. Pellentesque enim turpis, hendrerit.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-              dapibus rutrum facilisis. ClassName aptent taciti sociosqu ad
-              litora torquent per conubia nostra, per inceptos himenaeos. Etiam
-              tristique libero eu nibh porttitor fermentum. Nullam venenatis
-              erat id vehicula viverra. Nunc ultrices eros ut ultricies
-              condimentum. Mauris risus lacus, blandit sit amet venenatis non,
-              bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at,
-              euismod in lectus. Pellentesque habitant morbi tristique senectus
-              et netus et malesuada fames ac turpis egestas. In non lorem sit
-              amet elit placerat maximus. Pellentesque aliquam maximus risus,
-              vel sed vehicula.
-            </p>
-            <p>
-              Interdum et malesuada fames ac ante ipsum primis in faucibus.
-              Pellentesque venenatis dolor imperdiet dolor mattis sagittis.
-              Praesent rutrum sem diam, vitae egestas enim auctor sit amet.
-              Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien
-              risus, commodo eget turpis at, elementum convallis elit.
-              Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.
-            </p>
+
+            <PortableText value={post?.body} components={ptComponents} />
           </div>
         </section>
       </div>
@@ -51,3 +77,42 @@ const PostDetail = () => {
 };
 
 export default PostDetail;
+
+const query = groq`*[_type == "post" && slug.current == $slug][0] { 
+  title, 
+  mainImage,
+  body,
+    "name": author->name,
+    "categories": categories[]->title, 
+    publishedAt,
+}`;
+
+export async function getStaticPaths() {
+  const paths = await client.fetch(
+    groq`*[_type == "post" && defined(slug.current)][].slug.current`
+  );
+
+  return {
+    paths: paths.map((slug) => ({ params: { slug } })),
+    fallback: false,
+  };
+}
+
+export async function getStaticProps(context) {
+  // it is important to default the slug so that it doesn't return an error
+
+  const { slug = "" } = context.params;
+  const post = await client.fetch(query, { slug });
+
+  if (!post) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      post,
+    },
+  };
+}

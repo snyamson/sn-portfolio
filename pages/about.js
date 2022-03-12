@@ -6,18 +6,6 @@ import EducationItem from "../components/educationItem";
 import SkillItem from "../components/skillItem";
 
 const Detail = ({ skills, education, aboutMe }) => {
-  // const skills = [
-  //   "html5",
-  //   "css3",
-  //   "js",
-  //   "node",
-  //   "react",
-  //   "excel",
-  //   "rproj",
-  //   "postgres",
-  //   "git",
-  // ];
-
   return (
     <>
       <div id="main" className="alt">
@@ -29,13 +17,7 @@ const Detail = ({ skills, education, aboutMe }) => {
             <span className="image main">
               <img src="assets/images/about-me.svg" alt="" />
             </span>
-            {/* <p>
-              I had my undergraduate degree from Kwame Nkrumah University of
-              Science and Technology (KNUST) - Ghana there I studied Economics.
-              I possess great analytical and problem-solving skills. I enjoy
-              working alone and also in teams. My hobbies are coding and
-              researching.
-            </p> */}
+
             <p>{aboutMe[0]?.description}</p>
 
             {aboutMe[0]?.body !== null && (
@@ -67,15 +49,6 @@ const Detail = ({ skills, education, aboutMe }) => {
                 {education.map((item, index) => (
                   <EducationItem key={index} item={item} />
                 ))}
-
-                {/* <EducationItem
-                  title="Alison - Advanced Diploma in Data Science with R"
-                  logo="alison"
-                />
-                <EducationItem
-                  title="Udemy - Google Big Query and PostgreSQL: Big Query for Data Analysis"
-                  logo="udemy"
-                /> */}
               </div>
             </div>
           </div>

@@ -43,16 +43,13 @@ export default Index;
 export async function getStaticProps() {
   const posts = await client.fetch(groq`
       *[_type == "post" && publishedAt < now()]
-      {_id,
+      {
          publishedAt,
           title,
            slug,
            description, 
            body,
-           mainImage,
-           "name": author->name,
-            "categories": categories[]->title, 
-
+           thumbnail,
       } | order(publishedAt desc) 
     `);
 

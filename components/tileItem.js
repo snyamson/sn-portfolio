@@ -1,4 +1,3 @@
-import Link from "next/link";
 import imageUrlBuilder from "@sanity/image-url";
 import client from "../client";
 
@@ -26,23 +25,23 @@ const TileItem = ({ project }) => {
         <ul className="actions fit small">
           {project?.projectLink && (
             <li>
-              <Link href={project?.projectLink}>
-                <a className="button fit small">project</a>
-              </Link>
+              <a href={project?.projectLink} className="button fit small">
+                project
+              </a>
             </li>
           )}
           {project?.reportLink && (
             <li>
-              <Link href={project?.reportLink}>
-                <a className="button fit small">report</a>
-              </Link>
+              <a href={project?.reportLink} className="button fit small">
+                report
+              </a>
             </li>
           )}
           {project?.viewLink && (
             <li>
-              <Link href={project?.viewLink}>
-                <a className="button fit small">view</a>
-              </Link>
+              <a href={project?.viewLink} className="button fit small">
+                view
+              </a>
             </li>
           )}
         </ul>

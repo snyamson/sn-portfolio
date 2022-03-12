@@ -1,29 +1,26 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-import imageUrlBuilder from "@sanity/image-url";
+import { useNextSanityImage } from "next-sanity-image";
 import client from "../client";
+import { urlFor } from "../lib/imageUrl";
 
 const PostItem = ({ post }) => {
   //  data-position="center center"
   //   data-position="top center"
   //      data-position="25% 25%"
 
-  const builder = imageUrlBuilder(client);
-
-  const urlFor = (source) => {
-    return builder.image(source);
-  };
+  const imageProps = useNextSanityImage(client, post.thumbnail);
 
   return (
     <>
       <section>
-        <Link href="/detail">
-          <a className="image">
-            <img
-              src={urlFor(post?.mainImage).width(576).url()}
-              alt={`${post?.title} image`}
-            />
-          </a>
-        </Link>
+        <a className="image">
+          <img
+            src={urlFor(post?.thumbnail).width(576).url()}
+            alt={`${post?.title}'s image`}
+            dataPosition="top center"
+          />
+        </a>
         <div className="content">
           <div className="inner">
             <header className="major">
@@ -32,7 +29,7 @@ const PostItem = ({ post }) => {
             <p>{post?.description}</p>
             <ul className="actions">
               <li>
-                <Link href="/detail ">
+                <Link href="/post/[slug]" as={`/post/${post?.slug.current}`}>
                   <a className="button">Learn more</a>
                 </Link>
               </li>
