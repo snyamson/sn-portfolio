@@ -15,6 +15,8 @@ const PostDetail = ({ post }) => {
           style={{
             display: "flex",
             alignItems: "center",
+            fontStyle: "italic",
+            color: "#bebebe",
           }}
         >
           {children}
@@ -28,9 +30,8 @@ const PostDetail = ({ post }) => {
       <div
         style={{
           padding: "0 2rem",
-          background: "#fff",
-          color: "#212121",
-          marginLeft: "2rem",
+          background: "#9bf1ff",
+          color: "#121212",
         }}
       >
         {title}
@@ -53,17 +54,25 @@ const PostDetail = ({ post }) => {
                 alt={`${post?.title}'s image`}
               />
               <div
+                style={{
+                  position: "absolute",
+                  bottom: 0,
+                  right: 0,
+                }}
+              >
+                {post?.categories.map((category, index) => (
+                  <RenderCategory key={index} title={category} />
+                ))}
+              </div>
+
+              <div
                 className="row"
                 style={{
                   marginTop: "1rem",
                 }}
               >
                 <RenderMeta>
-                  By {post?.name} on{" "}
-                  {new Date(post?.publishedAt).toDateString()}
-                  {post?.categories.map((category, index) => (
-                    <RenderCategory key={index} title={category} />
-                  ))}
+                  By {post?.name} | {new Date(post?.publishedAt).toDateString()}
                 </RenderMeta>
               </div>
             </span>
