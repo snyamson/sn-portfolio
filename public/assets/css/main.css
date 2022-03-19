@@ -1,8 +1,15 @@
 @import url(fontawesome-all.min.css);
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,600,600italic");
+@font-face {
+  font-family: "AgustinaRegular";
+  src: local("AgustinaRegular"),
+    url('../../fonts/Agustina.otf') format("truetype");
+  font-weight: normal;
+}
 
 :root {
-  --main-dark: #242943;
+  /* --main-dark: #242943; */
+  --main-dark: #060707;
   --theme-blue: #0066cc
   --theme-white:#ffffff
   --theme-gray:#dedede
@@ -189,8 +196,8 @@ html {
 }
 
 body {
-  /* background: var(--main-dark); */
-  background-color: #060707;
+   background: var(--main-dark); 
+
 }
 
 body.is-preload *,
@@ -1891,6 +1898,11 @@ header.major > :first-child {
  
 }
 
+header.major > :first-child > span.name {
+ font-family: AgustinaRegular;
+}
+
+
 header.major > :first-child:after {
   content: "";
   background-color: #ffffff;
@@ -1900,12 +1912,25 @@ header.major > :first-child:after {
   width: 100%;
 }
 
+header.major.tile > :first-child:after {
+  content: "";
+  background-color: #ffffff;
+  display: block;
+  height: 2px;
+  margin: 0.325em 0 0.5em 0;
+  width: 50%;
+}
+
 header.major > p {
   font-size: 0.7em;
   font-weight: 600;
   letter-spacing: 0.25em;
   margin-bottom: 0;
   text-transform: uppercase;
+}
+
+header.major.tile > h3 > div.link {
+width: 100% !important;
 }
 
 body.is-ie header.major > :first-child:after {
@@ -3249,8 +3274,7 @@ button:disabled,
   -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
   background-color: #ffffff;
-  /* color: var(--main-dark); */
-   color: #060707;
+   color: var(--main-dark); 
   display: inline-block;
   line-height: 1.65em;
   margin-right: 0.325em;
@@ -3517,13 +3541,12 @@ body.is-preload #header.alt {
   -ms-transition-delay: 0.75s;
   transition-delay: 0.75s;
   pointer-events: none;
-  /* background-color: var(--main-dark); */
-  background-color: #060707;
+   background-color: var(--main-dark); 
   content: "";
   display: block;
   height: 100%;
   left: 0;
-  opacity: 0.85;
+  opacity: 0.65;
   position: absolute;
   top: 0;
   width: 100%;

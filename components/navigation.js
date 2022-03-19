@@ -1,5 +1,6 @@
+import dynamic from "next/dynamic";
 import Link from "next/link";
-import NavModal from "./navModal";
+const NavModal = dynamic(() => import("./navModal"));
 
 const Navigation = ({ resume }) => {
   return (

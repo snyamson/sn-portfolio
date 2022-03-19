@@ -16,30 +16,30 @@ const TileItem = ({ project }) => {
           alt={`${project?.title} image`}
         />
       </span>
-      <header className="major">
+      <header className="major tile">
         <h3>
-          <a className="link">{project.title}</a>
+          <div className="link">{project.title}</div>
         </h3>
-        <p>{project.description}</p>
+        <p>{project.description} </p>
         <br />
         <ul className="actions fit small">
           {project?.projectLink && (
             <li>
-              <a href={project?.projectLink} className="button fit small">
+              <a href={project?.projectLink} className="button  small">
                 project
               </a>
             </li>
           )}
           {project?.reportLink && (
             <li>
-              <a href={project?.reportLink} className="button fit small">
+              <a href={project?.reportLink} className="button  small">
                 report
               </a>
             </li>
           )}
           {project?.viewLink && (
             <li>
-              <a href={project?.viewLink} className="button fit small">
+              <a href={project?.viewLink} className="button  small">
                 view
               </a>
             </li>

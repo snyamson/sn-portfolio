@@ -1,0 +1,21 @@
+{
+  "short_name": "Portfolio",
+  "name": "Solomon's Portfolio",
+  "description": "A passionate Data Scientist, Research Fellow and Web Developer.",
+  "icons": [
+    {
+      "src": "./favicon.svg",
+      "type": "image/svg",
+      "sizes": "192x192"
+    },
+    {
+      "src": "./favicon.svg",
+      "type": "image/svg",
+      "sizes": "515x258"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#fff",
+  "background_color": "#060707"
+}
