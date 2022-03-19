@@ -1,14 +1,7 @@
 import { useState } from "react";
 import Layout from "../layout/layout";
-import nProgress from "nprogress";
 import { Router } from "next/router";
 import Spinner from "../components/spinner";
-import "../styles/nprogress.css";
-import { RecoilRoot } from "recoil";
-
-Router.events.on("routeChangeStart", nProgress.start);
-Router.events.on("routeChangeError", nProgress.done);
-Router.events.on("routeChangeComplete", nProgress.done);
 
 function MyApp({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);
@@ -25,12 +18,10 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      <RecoilRoot>
-        {loading && <Spinner />}
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </RecoilRoot>
+      {loading && <Spinner />}
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </>
   );
 }

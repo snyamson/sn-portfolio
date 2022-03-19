@@ -3,23 +3,19 @@ import Image from "next/image";
 import client, { ptComponents } from "../../client";
 import { PortableText } from "@portabletext/react";
 import { useNextSanityImage } from "next-sanity-image";
+import Reveal from "react-reveal/Reveal";
+import styles from "../../styles/slug.module.css";
 
 const PostDetail = ({ post }) => {
   const imageProps = useNextSanityImage(client, post.mainImage);
 
-  const RenderMeta = ({ children }) => {
+  const RenderMeta = ({ author, publishedAt }) => {
     return (
       <>
-        <div
-          className="col-12"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            fontStyle: "italic",
-            color: "#bebebe",
-          }}
-        >
-          {children}
+        <div className={`col-12 ${styles.meta}`}>
+          <div>By {author}</div>
+          <span className={styles.pipe}>|</span>
+          <div>{publishedAt}</div>
         </div>
       </>
     );
@@ -56,7 +52,7 @@ const PostDetail = ({ post }) => {
               <div
                 style={{
                   position: "absolute",
-                  bottom: 0,
+                  top: 0,
                   right: 0,
                 }}
               >
@@ -71,13 +67,15 @@ const PostDetail = ({ post }) => {
                   marginTop: "1rem",
                 }}
               >
-                <RenderMeta>
-                  By {post?.name} | {new Date(post?.publishedAt).toDateString()}
-                </RenderMeta>
+                <RenderMeta
+                  author={post?.name}
+                  publishedAt={new Date(post?.publishedAt).toDateString()}
+                />
               </div>
             </span>
-
-            <PortableText value={post?.body} components={ptComponents} />
+            <Reveal effect="fadeInUp">
+              <PortableText value={post?.body} components={ptComponents} />
+            </Reveal>
           </div>
         </section>
       </div>
