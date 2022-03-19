@@ -4,9 +4,7 @@ const Banner = ({ resume }) => {
       <section id="banner" className="major">
         <div className="inner">
           <header className="major">
-            <h1>
-              Hi, <span className="name"> My Name is Solomon Nyamson</span>
-            </h1>
+            <h1>Hi, my name is Solomon Nyamson</h1>
           </header>
           <div className="content">
             <p>

@@ -1898,10 +1898,6 @@ header.major > :first-child {
  
 }
 
-header.major > :first-child > span.name {
- font-family: AgustinaRegular;
-}
-
 
 header.major > :first-child:after {
   content: "";
