@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }) {
     setLoading(true);
   });
   Router.events.on("routeChangeError", () => {
-    setLoading(false);
+    setLoading(true);
   });
   Router.events.on("routeChangeComplete", () => {
     setLoading(false);

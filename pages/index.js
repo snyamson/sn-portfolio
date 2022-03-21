@@ -6,8 +6,9 @@ const Contact = dynamic(() => import("../components/contact"));
 const Tiles = dynamic(() => import("../containers/tiles"));
 const SEO = dynamic(() => import("../components/SEO"));
 import client from "../client";
+import Post from "../components/post";
 
-export default function Home({ aboutMe, resume, projects }) {
+export default function Home({ aboutMe, resume, projects, post }) {
   return (
     <>
       <SEO
@@ -43,6 +44,7 @@ export default function Home({ aboutMe, resume, projects }) {
       <Banner resume={resume} />
       <Tiles projects={projects} />
       <About about={aboutMe} />
+      <Post post={post} />
       <Contact />
     </>
   );
@@ -75,11 +77,24 @@ export async function getStaticProps() {
       }
     `);
 
+  const post = await client.fetch(groq`
+      *[_type == "post" && publishedAt < now()]
+      {
+         publishedAt,
+          title,
+           slug,
+           description, 
+           body,
+           thumbnail,
+      } | order(publishedAt desc)[0] 
+    `);
+
   return {
     props: {
       aboutMe,
       resume,
       projects,
+      post,
     },
   };
 }

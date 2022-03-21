@@ -30,7 +30,7 @@ const PostItem = ({ post }) => {
             <ul className="actions">
               <li>
                 <Link href="/post/[slug]" as={`/post/${post?.slug.current}`}>
-                  <a className="button">Learn more</a>
+                  <a className="button">Read more</a>
                 </Link>
               </li>
             </ul>

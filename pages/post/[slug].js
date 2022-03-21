@@ -5,8 +5,9 @@ import { PortableText } from "@portabletext/react";
 import { useNextSanityImage } from "next-sanity-image";
 import Reveal from "react-reveal/Reveal";
 import styles from "../../styles/slug.module.css";
+import Pagination from "../../components/pagination";
 
-const PostDetail = ({ post }) => {
+const PostDetail = ({ post, paginationPost }) => {
   const imageProps = useNextSanityImage(client, post.mainImage);
 
   const RenderMeta = ({ author, publishedAt }) => {
@@ -77,6 +78,7 @@ const PostDetail = ({ post }) => {
               <PortableText value={post?.body} components={ptComponents} />
             </Reveal>
           </div>
+          <Pagination paginationPost={paginationPost} />
         </section>
       </div>
     </>
@@ -93,6 +95,16 @@ const query = groq`*[_type == "post" && slug.current == $slug][0] {
     "categories": categories[]->title, 
     publishedAt,
 }`;
+
+const pagiQuery = groq`
+      *[_type == "post" && slug.current == $slug]{
+      "currentPost" : {
+        title
+      },
+      "previousPost": *[_type == "post" && ^.publishedAt > publishedAt]|order(publishedAt desc)[0]{"slug":slug.current}, 
+       "nextPost": *[_type == "post" && ^.publishedAt < publishedAt]|order(publishedAt asc)[0]{"slug":slug.current} 
+      } | order(publishedAt)[0] 
+    `;
 
 export async function getStaticPaths() {
   const paths = await client.fetch(
@@ -111,6 +123,8 @@ export async function getStaticProps(context) {
   const { slug = "" } = context.params;
   const post = await client.fetch(query, { slug });
 
+  const paginationPost = await client.fetch(pagiQuery, { slug });
+
   if (!post) {
     return {
       notFound: true,
@@ -120,6 +134,7 @@ export async function getStaticProps(context) {
   return {
     props: {
       post,
+      paginationPost,
     },
   };
 }
