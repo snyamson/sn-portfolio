@@ -6,7 +6,7 @@ const About = ({ about }) => {
       <section
         id="one"
         style={{
-          backgroundColor: "#1d1d24",
+          backgroundColor: "#121515",
         }}
       >
         <div className="inner">

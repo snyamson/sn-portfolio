@@ -23,7 +23,7 @@ const PostItem = ({ post }) => {
         </a>
         <div className="content">
           <div className="inner">
-            <header className="major tile">
+            <header className="title tile">
               <h3>{post?.title}</h3>
             </header>
             <p>{post?.description}</p>

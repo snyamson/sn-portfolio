@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import groq from "groq";
+import ScrollToTop from "react-scroll-to-top";
 const About = dynamic(() => import("../components/about"));
 const Banner = dynamic(() => import("../components/banner"));
 const Contact = dynamic(() => import("../components/contact"));

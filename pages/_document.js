@@ -38,6 +38,11 @@ class MyDocument extends Document {
         <body className="is-preload">
           <Main />
           <NextScript />
+          {/* Tidio Chat Bot */}
+          <script
+            src="//code.tidio.co/4fbls9mxgr5dtarodeddjz1ynirdlhuf.js"
+            async
+          ></script>
         </body>
       </Html>
     );

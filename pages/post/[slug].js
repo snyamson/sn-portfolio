@@ -39,11 +39,12 @@ const PostDetail = ({ post, paginationPost }) => {
   return (
     <>
       <div id="main" className="alt">
-        <section id="one">
+        <section>
           <div className="inner">
-            <header className="major">
-              <h1 className="post_title">{post?.title}</h1>
+            <header className="title">
+              <h1>{post?.title}</h1>
             </header>
+
             <span className="image main">
               <Image
                 {...imageProps}

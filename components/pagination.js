@@ -1,8 +1,6 @@
 import Link from "next/link";
 
 const Pagination = ({ paginationPost }) => {
-  console.log(paginationPost);
-
   const { previousPost, nextPost } = paginationPost;
 
   return (

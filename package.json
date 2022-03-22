@@ -26,6 +26,7 @@
     "react-hot-toast": "^2.2.0",
     "react-icons": "^4.3.1",
     "react-reveal": "^1.2.2",
+    "react-scroll-to-top": "^1.0.8",
     "recoil": "^0.6.1",
     "yup": "^0.32.11"
   },

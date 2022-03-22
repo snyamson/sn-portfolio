@@ -16,7 +16,7 @@ const TileItem = ({ project }) => {
           alt={`${project?.title} image`}
         />
       </span>
-      <header className="major tile">
+      <header className="title tile">
         <h3>
           <div className="link">{project.title}</div>
         </h3>

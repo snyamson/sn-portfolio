@@ -1,13 +1,12 @@
 import PostItem from "./postItem";
 
 const Post = ({ post }) => {
-  console.log(post);
   return (
     <>
       <section
         id="one"
         style={{
-          backgroundColor: "#242943",
+          backgroundColor: "#060707",
         }}
       >
         <div className="inner">
