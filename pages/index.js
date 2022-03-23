@@ -1,13 +1,12 @@
 import dynamic from "next/dynamic";
 import groq from "groq";
-import ScrollToTop from "react-scroll-to-top";
 const About = dynamic(() => import("../components/about"));
 const Banner = dynamic(() => import("../components/banner"));
 const Contact = dynamic(() => import("../components/contact"));
 const Tiles = dynamic(() => import("../containers/tiles"));
 const SEO = dynamic(() => import("../components/SEO"));
+const Post = dynamic(() => import("../components/post"));
 import client from "../client";
-import Post from "../components/post";
 
 export default function Home({ aboutMe, resume, projects, post }) {
   return (

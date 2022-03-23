@@ -1,7 +1,8 @@
+import dynamic from "next/dynamic";
 import { useState } from "react";
-import Layout from "../layout/layout";
 import { Router } from "next/router";
-import Spinner from "../components/spinner";
+const Layout = dynamic(() => import("../layout/layout"));
+const Spinner = dynamic(() => import("../components/spinner"));
 
 function MyApp({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);

@@ -1,9 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
+import dynamic from "next/dynamic";
 import groq from "groq";
 import { PortableText } from "@portabletext/react";
 import client, { ptComponents } from "../client";
-import EducationItem from "../components/educationItem";
-import SkillItem from "../components/skillItem";
+const EducationItem = dynamic(() => import("../components/educationItem"));
+const SkillItem = dynamic(() => import("../components/skillItem"));
 
 const Detail = ({ skills, education, aboutMe }) => {
   return (

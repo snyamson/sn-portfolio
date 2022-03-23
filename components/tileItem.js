@@ -17,9 +17,7 @@ const TileItem = ({ project }) => {
         />
       </span>
       <header className="title tile">
-        <h3>
-          <div className="link">{project.title}</div>
-        </h3>
+        <h3>{project.title}</h3>
         <p>{project.description} </p>
         <br />
         <ul className="actions fit small">
