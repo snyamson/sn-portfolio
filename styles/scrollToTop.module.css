@@ -2,6 +2,7 @@
   bottom: 8.75rem;
   border-radius: 1.87rem;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
   position: fixed;
   right: 2.2rem;
   z-index: 2000;
@@ -15,4 +16,11 @@
   display: flex;
   justify-content: center;
   height: 100%;
+}
+
+@media screen and (max-width: 736px) {
+  .container {
+    bottom: 5.5rem;
+    right: 1.2rem;
+  }
 }
