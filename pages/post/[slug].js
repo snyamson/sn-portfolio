@@ -14,9 +14,10 @@ const PostDetail = ({ post, paginationPost }) => {
     return (
       <>
         <div className={`col-12 ${styles.meta}`}>
-          <div>By {author}</div>
-          <span className={styles.pipe}>|</span>
-          <div>{publishedAt}</div>
+          <p>
+            Posted on <span className={styles.span}>{publishedAt}</span>
+            By <span className={styles.span}>{author}</span>
+          </p>
         </div>
       </>
     );
@@ -44,7 +45,10 @@ const PostDetail = ({ post, paginationPost }) => {
             <header className="title">
               <h1>{post?.title}</h1>
             </header>
-
+            <RenderMeta
+              author={post?.name}
+              publishedAt={new Date(post?.publishedAt).toDateString()}
+            />
             <span className="image main">
               <Image
                 {...imageProps}
@@ -68,12 +72,7 @@ const PostDetail = ({ post, paginationPost }) => {
                 style={{
                   marginTop: "1rem",
                 }}
-              >
-                <RenderMeta
-                  author={post?.name}
-                  publishedAt={new Date(post?.publishedAt).toDateString()}
-                />
-              </div>
+              ></div>
             </span>
             <Reveal effect="fadeInUp">
               <PortableText value={post?.body} components={ptComponents} />

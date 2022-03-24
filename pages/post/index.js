@@ -1,6 +1,6 @@
-import groq from "groq";
-import client from "../../client";
-import PostItem from "../../components/postItem";
+import dynamic from "next/dynamic";
+const PostItem = dynamic(() => import("../../components/postItem"));
+import { getAllPost } from "../../lib/post";
 
 const Index = ({ posts }) => {
   return (
@@ -41,17 +41,7 @@ const Index = ({ posts }) => {
 export default Index;
 
 export async function getStaticProps() {
-  const posts = await client.fetch(groq`
-      *[_type == "post" && publishedAt < now()]
-      {
-         publishedAt,
-          title,
-           slug,
-           description, 
-           body,
-           thumbnail,
-      } | order(publishedAt desc) 
-    `);
+  const posts = await getAllPost();
 
   return {
     props: {

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import PostItem from "./postItem";
 
 const Post = ({ post }) => {
@@ -20,6 +21,23 @@ const Post = ({ post }) => {
           </section>
         </div>
       </section>
+      <br />
+      <div className="row">
+        <div className="col-12">
+          <ul
+            className="actions"
+            style={{
+              justifyContent: "center",
+            }}
+          >
+            <li>
+              <Link href="/post">
+                <a className="button primary">Load More Post</a>
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </div>
     </>
   );
 };

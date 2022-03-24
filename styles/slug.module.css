@@ -1,11 +1,11 @@
 /* Custom */
 div.meta {
-  display: flex;
-  color: #bebebe;
+  color: #ffffff;
   font-style: italic;
 }
 
-span.pipe {
+.span {
+  color: #9bf1ff;
   display: inline-block;
-  margin: 0 1.5rem;
+  margin: 0 0.3rem;
 }

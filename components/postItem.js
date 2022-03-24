@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useNextSanityImage } from "next-sanity-image";
 import client from "../client";
 import { urlFor } from "../lib/imageUrl";
+import EstimatedReadTime from "./estimatedReadTime";
 
 const PostItem = ({ post }) => {
   //  data-position="center center"
@@ -27,6 +28,10 @@ const PostItem = ({ post }) => {
               <h3>{post?.title}</h3>
             </header>
             <p>{post?.description}</p>
+            <EstimatedReadTime
+              date={post?.publishedAt}
+              readingTime={post?.estimatedReadingTime}
+            />
             <ul className="actions">
               <li>
                 <Link href="/post/[slug]" as={`/post/${post?.slug.current}`}>

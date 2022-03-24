@@ -86,6 +86,7 @@ export async function getStaticProps() {
            description, 
            body,
            thumbnail,
+          "estimatedReadingTime": round(length(pt::text(body)) / 5 / 180 )
       } | order(publishedAt desc)[0] 
     `);
 

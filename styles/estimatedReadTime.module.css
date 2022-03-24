@@ -1,0 +1,13 @@
+.wrapper {
+  margin-top: -1rem;
+  margin-bottom: 1.5rem;
+}
+
+.container {
+  display: flex;
+}
+
+.text {
+  display: inline-block;
+  margin-left: 0.5rem;
+}
