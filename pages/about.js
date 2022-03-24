@@ -1,10 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import dynamic from "next/dynamic";
-import groq from "groq";
 import { PortableText } from "@portabletext/react";
-import client, { ptComponents } from "../client";
+import { ptComponents } from "../client";
 const EducationItem = dynamic(() => import("../components/educationItem"));
 const SkillItem = dynamic(() => import("../components/skillItem"));
+import { getAboutMe, getEducation, getSkills } from "../lib/about";
 
 const Detail = ({ skills, education, aboutMe }) => {
   return (
@@ -62,34 +62,9 @@ const Detail = ({ skills, education, aboutMe }) => {
 export default Detail;
 
 export async function getStaticProps() {
-  const skills = await client.fetch(groq`
-      *[_type == "skill"]
-      {
-          title,
-           slug, 
-          skillIcon 
-      }
-    `);
-
-  const education = await client.fetch(groq`
-      *[_type == "education"]
-      {
-          title,
-           slug, 
-          institutionImage,
-          certType,
-          "docFileUrl": docFile.asset->url,
-          body
-      }
-    `);
-
-  const aboutMe = await client.fetch(groq`
-      *[_type == "aboutMe"]
-      {
-        description,
-        body
-      }
-    `);
+  const skills = await getSkills();
+  const education = await getEducation();
+  const aboutMe = await getAboutMe();
 
   return {
     props: {
