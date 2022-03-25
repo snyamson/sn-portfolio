@@ -19,7 +19,7 @@ const TileItem = ({ project }) => {
       <header className="title tile">
         <h3>{project.title}</h3>
         <p>{project.description} </p>
-        <br />
+
         <ul className="actions fit small">
           {project?.projectLink && (
             <li>

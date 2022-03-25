@@ -21,7 +21,7 @@ const Post = ({ post }) => {
           </section>
         </div>
       </section>
-      <br />
+
       <div className="row">
         <div className="col-12">
           <ul
