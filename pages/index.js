@@ -5,15 +5,27 @@ const Contact = dynamic(() => import("../components/contact"));
 const Tiles = dynamic(() => import("../containers/tiles"));
 const SEO = dynamic(() => import("../components/SEO"));
 const Post = dynamic(() => import("../components/post"));
-import { getAboutMe, getPost, getProjects, getResume } from "../lib/post";
+import {
+  getAboutMe,
+  getPost,
+  getProjectCategories,
+  getProjects,
+  getResume,
+} from "../lib/post";
 import seoData from "../lib/seoData";
 
-export default function Home({ aboutMe, resume, projects, post }) {
+export default function Home({
+  aboutMe,
+  resume,
+  projects,
+  post,
+  projectCategories,
+}) {
   return (
     <>
       <SEO data={seoData} />
       <Banner resume={resume} />
-      <Tiles projects={projects} />
+      <Tiles projects={projects} categories={projectCategories} />
       <About about={aboutMe} />
       <Post post={post} />
       <Contact />
@@ -26,6 +38,7 @@ export async function getStaticProps() {
   const resume = await getResume();
   const projects = await getProjects();
   const post = await getPost();
+  const projectCategories = await getProjectCategories();
 
   return {
     props: {
@@ -33,6 +46,7 @@ export async function getStaticProps() {
       resume,
       projects,
       post,
+      projectCategories,
     },
   };
 }

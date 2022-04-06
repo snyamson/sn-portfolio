@@ -1,0 +1,64 @@
+/* underline #53e3fb */
+/* main color #9bf1ff */
+
+header.major {
+  width: -moz-max-content;
+  width: -webkit-max-content;
+  width: -ms-max-content;
+  width: max-content;
+  margin-bottom: 2em;
+}
+
+header.major > p {
+  font-size: 0.7em;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  margin-bottom: 0;
+  text-transform: uppercase;
+}
+
+header.major > :first-child {
+  margin-bottom: 0;
+  width: calc(100% + 0.5em);
+}
+
+header.major > :first-child:after {
+  content: "";
+  background-color: #fff;
+  display: block;
+  height: 2px;
+  margin: 0.325em 0 0.5em 0;
+  width: 100%;
+}
+
+.wrapper {
+  display: flex;
+  overflow-x: scroll;
+}
+
+.wrapper::-webkit-scrollbar {
+  display: none; /* Safari and Chrome browsers */
+}
+
+.wrapper {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* mozilla */
+}
+
+.container {
+  display: flex;
+}
+
+.item {
+  padding-right: 1rem;
+  flex-grow: inherit;
+  cursor: pointer;
+}
+
+header.major.active > :first-child:after {
+  background-color: #53e3fb;
+}
+
+header.major.active > p {
+  color: #9bf1ff;
+}
